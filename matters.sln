@@ -1,8 +1,47 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{515EA7DF-4DD6-4BA7-9A5A-9300364E70AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "proj", "proj", "{001DDC08-75F0-41D0-B934-C9C3B8EA74B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{831852F9-719A-4ADF-AD29-28E090172711}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matters.Core", "Matters.Core\Matters.Core.csproj", "{2335252B-070D-452A-BD08-06B4DF615F21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matters.Core.Tests", "Matters.Core.Tests\Matters.Core.Tests.csproj", "{F1D3BA93-9B1E-48BE-A946-50139FAAA008}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC5BD0FA-C9A5-4477-80D8-2E38851553C8}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		matters.vsmdi = matters.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = matters.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2335252B-070D-452A-BD08-06B4DF615F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2335252B-070D-452A-BD08-06B4DF615F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2335252B-070D-452A-BD08-06B4DF615F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2335252B-070D-452A-BD08-06B4DF615F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D3BA93-9B1E-48BE-A946-50139FAAA008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D3BA93-9B1E-48BE-A946-50139FAAA008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D3BA93-9B1E-48BE-A946-50139FAAA008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D3BA93-9B1E-48BE-A946-50139FAAA008}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F1D3BA93-9B1E-48BE-A946-50139FAAA008} = {515EA7DF-4DD6-4BA7-9A5A-9300364E70AD}
+		{DC5BD0FA-C9A5-4477-80D8-2E38851553C8} = {515EA7DF-4DD6-4BA7-9A5A-9300364E70AD}
+		{2335252B-070D-452A-BD08-06B4DF615F21} = {001DDC08-75F0-41D0-B934-C9C3B8EA74B6}
 	EndGlobalSection
 EndGlobal
