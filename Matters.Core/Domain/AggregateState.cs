@@ -6,6 +6,9 @@ namespace Matters.Core.Domain
     public class AggregateState : IEventSourced
     {
         public Guid Id { get; private set; }
+        public int Version { get; internal set; }
+
+        private readonly List<Event> _changes = new List<Event>();
        
         public void LoadFromHistory(IEnumerable<Event> events)
         {
@@ -17,18 +20,17 @@ namespace Matters.Core.Domain
 
         public IEnumerable<Event> GetUncommittedEvents()
         {
-            throw new NotImplementedException();
+            return _changes;
         }
 
         public void MarkChangesAsCommited()
         {
-            throw new NotImplementedException();
+            _changes.Clear();
         }
 
         public void Apply(Event @event)
         {
-            //RedirectToWhen
-            throw new NotImplementedException();
+            FindApply.InvokeEvent(this, @event);
         }
     }
 }

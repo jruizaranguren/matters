@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AggregateRootBase.cs" />
     <Compile Include="Domain\AggregateState.cs" />
     <Compile Include="Domain\Event.cs" />
+    <Compile Include="Domain\FindApply.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
     <Compile Include="Domain\IAggregateState.cs" />
     <Compile Include="Domain\IEvent.cs" />
