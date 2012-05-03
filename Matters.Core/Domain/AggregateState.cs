@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Matters.Core.Domain
 {
     public class AggregateState : IEventSourced
     {
         public Guid Id { get; private set; }
-        public int Version { get; internal set; }
+        public int Version { get; protected set; }
 
         private readonly List<Event> _changes = new List<Event>();
        
@@ -14,8 +15,9 @@ namespace Matters.Core.Domain
         {
             foreach (var e in events)
             {
-                Apply(e);
+                Apply(e,false);
             }
+            Version = events.Last().Version;
         }
 
         public IEnumerable<Event> GetUncommittedEvents()
@@ -28,9 +30,16 @@ namespace Matters.Core.Domain
             _changes.Clear();
         }
 
-        public void Apply(Event @event)
+        public void Apply(Event @event, bool isNew)
         {
+           
             FindApply.InvokeEvent(this, @event);
+            if (isNew)
+            {
+                Version +=1;
+                @event.SetVersion(Version);
+                _changes.Add(@event);
+            }
         }
     }
 }

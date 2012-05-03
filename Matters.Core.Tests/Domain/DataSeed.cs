@@ -7,8 +7,15 @@ namespace Matters.Core.Tests.Domain
     {
         ProcessInstanceState _state;
 
+        public ProcessInstance(ProcessInstanceState state)
+        {
+            _state = state;
+        }
 
-
+        void Apply(Event @event)
+        {
+            _state.Apply(@event, true);
+        }
     }
 
     public class ProcessInstanceState : AggregateState
@@ -16,10 +23,7 @@ namespace Matters.Core.Tests.Domain
 
         public ProcessInstanceState(IEnumerable<Event> events)
         {
-            foreach (var @event in events)
-            {
-                Apply(@event);
-            }
+            LoadFromHistory(events);
         }
     }
 }

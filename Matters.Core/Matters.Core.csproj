@@ -48,6 +48,7 @@
     <Compile Include="Domain\IEvent.cs" />
     <Compile Include="Domain\IEventSourced.cs" />
     <Compile Include="Domain\IHaveIdentity.cs" />
+    <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
