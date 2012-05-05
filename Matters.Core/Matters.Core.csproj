@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>matters.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EventStore">
       <HintPath>..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
@@ -45,9 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparing\CompareObjects.cs" />
     <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\AggregateState.cs" />
     <Compile Include="Domain\DomainError.cs" />
+    <Compile Include="Domain\EnumerationBase.cs" />
     <Compile Include="Domain\EventSourcedConstructor.cs" />
     <Compile Include="Domain\Event.cs" />
     <Compile Include="Persistence\AggregateNotFoundException.cs" />
@@ -74,7 +82,11 @@
   <ItemGroup>
     <None Include="App_Readme\EventStore - Architectural Overview.docx" />
     <None Include="App_Readme\EventStore - Transactional Integrity.docx" />
+    <None Include="matters.snk" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Testing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
