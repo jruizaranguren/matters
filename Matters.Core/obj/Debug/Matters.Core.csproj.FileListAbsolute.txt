@@ -3,3 +3,6 @@ D:\Projects\matters\Matters.Core\bin\Debug\Matters.Core.pdb
 D:\Projects\matters\Matters.Core\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\matters\Matters.Core\obj\Debug\Matters.Core.dll
 D:\Projects\matters\Matters.Core\obj\Debug\Matters.Core.pdb
+D:\Projects\matters\Matters.Core\bin\Debug\EventStore.dll
+D:\Projects\matters\Matters.Core\bin\Debug\EventStore.pdb
+D:\Projects\matters\Matters.Core\bin\Debug\EventStore.xml

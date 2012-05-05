@@ -1,7 +1,6 @@
 ﻿namespace Matters.Core.Domain
 {
-    public interface IAggregateState
+    public interface IAggregateState : IEventSourced
     {
-        void Apply(IEvent @event);
     }
 }

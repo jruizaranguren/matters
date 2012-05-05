@@ -5,3 +5,6 @@ D:\Projects\matters\Matters.Core.Tests\bin\Debug\Matters.Core.pdb
 D:\Projects\matters\Matters.Core.Tests\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\matters\Matters.Core.Tests\obj\Debug\Matters.Core.Tests.dll
 D:\Projects\matters\Matters.Core.Tests\obj\Debug\Matters.Core.Tests.pdb
+D:\Projects\matters\Matters.Core.Tests\bin\Debug\EventStore.dll
+D:\Projects\matters\Matters.Core.Tests\bin\Debug\EventStore.pdb
+D:\Projects\matters\Matters.Core.Tests\bin\Debug\EventStore.xml

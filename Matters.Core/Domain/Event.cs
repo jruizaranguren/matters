@@ -7,9 +7,14 @@ namespace Matters.Core.Domain
         public int Version { get; protected set;}
         public DateTime Timestamp { get; protected set; }
 
-        public void SetVersion(int version)
+        public void SetActualVersion(int version)
         {
             Version = version;
+        }
+
+        public void OccursNow()
+        {
+            Timestamp = DateTime.Now;
         }
     }
 }

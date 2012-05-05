@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Matters.Core.Domain
 {
-    public class AggregateState : IEventSourced
+    public class AggregateState : IAggregateState
     {
         public Guid Id { get; private set; }
         public int Version { get; protected set; }
@@ -37,7 +37,7 @@ namespace Matters.Core.Domain
             if (isNew)
             {
                 Version +=1;
-                @event.SetVersion(Version);
+                @event.SetActualVersion(Version);
                 _changes.Add(@event);
             }
         }
