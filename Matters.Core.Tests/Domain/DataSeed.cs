@@ -61,6 +61,4 @@ namespace Matters.Core.Tests.Domain
         }
     }
     #endregion TaskInstanceAggregate
-
-   
 }

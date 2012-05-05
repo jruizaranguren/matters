@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\AggregateState.cs" />
+    <Compile Include="Domain\DomainError.cs" />
     <Compile Include="Domain\EventSourcedConstructor.cs" />
     <Compile Include="Domain\Event.cs" />
-    <Compile Include="Persistence\Exceptions.cs" />
+    <Compile Include="Persistence\AggregateNotFoundException.cs" />
+    <Compile Include="Persistence\ConcurrencyException.cs" />
     <Compile Include="Domain\FindApply.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
     <Compile Include="Domain\IAggregateState.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Persistence\IEventSource.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\EventSourcedRepository.cs" />
+    <Compile Include="Persistence\PersistenceBaseException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
