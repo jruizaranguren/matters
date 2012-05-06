@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Matters.Core.Domain
 {
-    public class AggregateState : IAggregateState
+    public abstract class AggregateState : IAggregateState
     {
         public Guid Id { get; private set; }
         public int Version { get; protected set; }

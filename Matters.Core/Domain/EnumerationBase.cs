@@ -57,7 +57,7 @@ namespace Matters.Core.Domain
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(EnumerationBase<T, TId, TValue>)) return false;
+            if (!obj.GetType().IsSubclassOf(typeof(EnumerationBase<T, TId, TValue>))) return false;
             return Equals((EnumerationBase<T, TId, TValue>)obj);
         }
 

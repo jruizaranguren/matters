@@ -14,7 +14,7 @@ namespace Matters.Core.Domain
 
         public void OccursNow()
         {
-            Timestamp = DateTime.Now;
+            Timestamp = SystemTime.Now();
         }
     }
 }

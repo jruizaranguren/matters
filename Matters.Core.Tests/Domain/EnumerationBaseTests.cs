@@ -11,15 +11,20 @@ namespace Matters.Core.Tests.Domain
     public class EnumerationBaseTests
     {
         [TestMethod]
-        public void RawEnumerationClassIsCorrectlyInitialized()
+        public void RawEnumerationClass_IsCorrectlyInitialized()
         {
             var expectedNumberItems = 3;
+            var expectedCode = Guid.Parse("{5CA84018-AB60-4D7C-808B-26EB400D6F25}");
+               
             var actualNumberItems = RawEnumerationClass.GetValues().Count();
+
             Assert.AreEqual(expectedNumberItems, actualNumberItems);
+            Assert.AreEqual(expectedCode.GetHashCode(),RawEnumerationClass.FirstValue.GetHashCode());
+            Assert.AreEqual(RawEnumerationClass.FirstValue, RawEnumerationClass.Default);
         }
 
         [TestMethod]
-        public void CustomTypeEnumerationClassIsCorrectlyInitialized()
+        public void CustomTypeEnumerationClass_IsCorrectlyInitialized()
         {
             var expectedNumberItems = 3;
             var expectedVat = 0.07M;
@@ -29,11 +34,37 @@ namespace Matters.Core.Tests.Domain
         }
 
         [TestMethod]
-        public void EnumerationBaseEqualOperatorWorks()
+        public void Equals_WithEnumerationBaseArgument_Works()
         {
-            var consumer = new RawEnumerationConsumer();
-            Assert.AreEqual(RawEnumerationClass.FirstValue, consumer.RawInstance);
-            Assert.AreNotEqual(RawEnumerationClass.SecondValue, consumer.RawInstance);
+            var expected = RawEnumerationClass.FirstValue;
+            Assert.IsTrue(expected.Equals(RawEnumerationClass.FirstValue));
+            Assert.IsFalse(expected.Equals(RawEnumerationClass.SecondValue));
+            Assert.IsFalse(RawEnumerationClass.SecondValue.Equals(null));
+        }
+
+        [TestMethod]
+        public void Equals_WithObjectArgument_Works()
+        { 
+            var expected = RawEnumerationClass.FirstValue;
+            var notExpected = RawEnumerationClass.SecondValue;
+            
+            Assert.IsFalse(RawEnumerationClass.SecondValue.Equals(new object()));
+            Assert.IsFalse(RawEnumerationClass.SecondValue.Equals((object)null));
+            Assert.IsTrue(RawEnumerationClass.FirstValue.Equals((object)expected));
+            Assert.IsFalse(RawEnumerationClass.FirstValue.Equals((object)notExpected));
+         }
+
+        [TestMethod]
+        public void EqualityOperators_Works()
+        {
+            var consumer = RawEnumerationClass.FirstValue;
+            
+            Assert.IsTrue(consumer == RawEnumerationClass.FirstValue);
+            Assert.IsFalse(consumer == RawEnumerationClass.SecondValue);
+            Assert.IsFalse(consumer == (RawEnumerationClass)null);
+            Assert.IsFalse((RawEnumerationClass)null == consumer);
+            Assert.IsTrue(consumer != RawEnumerationClass.SecondValue);
+            Assert.IsTrue((RawEnumerationClass)null == (RawEnumerationClass)null);
         }
     }
 
@@ -47,6 +78,7 @@ namespace Matters.Core.Tests.Domain
             FirstValue = Register(new Guid("5CA84018-AB60-4D7C-808B-26EB400D6F25"), "First Value");
             SecondValue = Register(new Guid("6DFED3E6-AD72-4605-975C-72A5A2880F6C"), "Second Value");
             ThirdValue = Register(new Guid("CFD1C6FB-5F75-4B35-A5AC-26F0D019A9C7"), "Third Value");
+            DefaultTo(FirstValue);
         }
 
         public static readonly RawEnumerationClass FirstValue;
@@ -54,8 +86,6 @@ namespace Matters.Core.Tests.Domain
         public static readonly RawEnumerationClass ThirdValue;
 
     }
-
-
 
     /// <summary>
     /// Example with a Custom class as TValue

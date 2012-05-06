@@ -4,6 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Collections;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Matters.Core.Comparing
 {
@@ -18,9 +19,8 @@ namespace Matters.Core.Comparing
     /// <summary>
     /// Class that allows comparison of two objects of the same type to each other.  Supports classes, lists, arrays, dictionaries, child comparison and more.
     /// </summary>
-#if CODE_COVERAGE
+
     [ExcludeFromCodeCoverage]
-#endif
     public class CompareObjects
     {
         #region Class Variables

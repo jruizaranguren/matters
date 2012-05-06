@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Matters.Core.Domain
 {
+    [ExcludeFromCodeCoverage]
     [Serializable]
     public class DomainError : Exception
     {

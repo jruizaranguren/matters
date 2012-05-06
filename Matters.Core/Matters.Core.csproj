@@ -58,6 +58,7 @@
     <Compile Include="Domain\EnumerationBase.cs" />
     <Compile Include="Domain\EventSourcedConstructor.cs" />
     <Compile Include="Domain\Event.cs" />
+    <Compile Include="Domain\SystemTime.cs" />
     <Compile Include="Persistence\AggregateNotFoundException.cs" />
     <Compile Include="Persistence\ConcurrencyException.cs" />
     <Compile Include="Domain\FindApply.cs" />

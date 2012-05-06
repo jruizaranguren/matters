@@ -1,5 +1,7 @@
-﻿namespace Matters.Core.Domain
+﻿using System.Diagnostics.CodeAnalysis;
+namespace Matters.Core.Domain
 {
+    [ExcludeFromCodeCoverage]
     public class AggregateRoot<T> : IAggregateRoot where T : AggregateState
     {
         protected T _state;
