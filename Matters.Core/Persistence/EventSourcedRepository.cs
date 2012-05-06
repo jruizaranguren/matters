@@ -19,6 +19,7 @@ namespace Matters.Core.Persistence
         public void Save(T eventSourced, int expectedVersion)
         {
             _source.SaveEvents(eventSourced.Id, eventSourced.GetUncommittedEvents(), expectedVersion);
+            eventSourced.MarkChangesAsCommited();
         }
 
         public T GetById(Guid id)

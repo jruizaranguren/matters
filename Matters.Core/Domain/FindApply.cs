@@ -22,7 +22,7 @@ namespace Matters.Core.Domain
                 .ToDictionary(m => m.GetParameters().First().ParameterType, m => m);
         }
 
-        [DebuggerNonUserCode]
+       
         public static void InvokeEvent<T>(T instance, object @event)
         {
             MethodInfo info;
