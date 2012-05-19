@@ -11,7 +11,7 @@ namespace Matters.Core.Tests.Domain
     public class EventSourcedConstructorTests
     {
         [TestMethod]
-        public void Buid_ReturnsEventCollection_From_BuildFromHistoryImplementation()
+        public void Buid_Returns_Event_Collection_From_BuildFromHistory_Implementation()
         {
             var factory = new EventSourcedSampleFactory();
 

@@ -58,6 +58,7 @@
     <Compile Include="Domain\EnumerationBase.cs" />
     <Compile Include="Domain\EventSourcedConstructor.cs" />
     <Compile Include="Domain\Event.cs" />
+    <Compile Include="Domain\Identities.cs" />
     <Compile Include="Domain\SystemTime.cs" />
     <Compile Include="Persistence\AggregateNotFoundException.cs" />
     <Compile Include="Persistence\ConcurrencyException.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Domain\IEventPublisher.cs" />
     <Compile Include="Domain\IEventSourced.cs" />
     <Compile Include="Domain\IHaveIdentity.cs" />
+    <Compile Include="Persistence\FakeEventSource.cs" />
     <Compile Include="Persistence\InMemoryEventSource.cs" />
     <Compile Include="Persistence\JOliverEventSource.cs" />
     <Compile Include="Persistence\IEventSource.cs" />

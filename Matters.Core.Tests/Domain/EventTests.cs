@@ -22,7 +22,7 @@ namespace Matters.Core.Tests.Domain
         }
 
         [TestMethod]
-        public void OccursNow_Sets_Timestamp_ToNow()
+        public void OccursNow_Sets_Timestamp_To_Now()
         { 
             SystemTime.Now = () => new DateTime(2012, 5, 5);
             var expected = new DateTime(2012, 5, 5);

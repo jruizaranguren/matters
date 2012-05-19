@@ -11,7 +11,7 @@ namespace Matters.Core.Tests.Domain
     public class FindApplyTests
     {
         [TestMethod]
-        public void InvokeEvent_CallsApplyMethodInObject()
+        public void InvokeEvent_Calls_Apply_Method_In_Object()
         {
             var sampleObject = new SampleClass();
 

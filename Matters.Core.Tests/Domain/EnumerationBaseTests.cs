@@ -11,7 +11,7 @@ namespace Matters.Core.Tests.Domain
     public class EnumerationBaseTests
     {
         [TestMethod]
-        public void RawEnumerationClass_IsCorrectlyInitialized()
+        public void RawEnumerationClass_Is_Correctly_Initialized()
         {
             var expectedNumberItems = 3;
             var expectedCode = Guid.Parse("{5CA84018-AB60-4D7C-808B-26EB400D6F25}");
@@ -24,7 +24,7 @@ namespace Matters.Core.Tests.Domain
         }
 
         [TestMethod]
-        public void CustomTypeEnumerationClass_IsCorrectlyInitialized()
+        public void CustomTypeEnumerationClass_Is_Correctly_Initialized()
         {
             var expectedNumberItems = 3;
             var expectedVat = 0.07M;
@@ -34,7 +34,7 @@ namespace Matters.Core.Tests.Domain
         }
 
         [TestMethod]
-        public void Equals_WithEnumerationBaseArgument_Works()
+        public void Equals_With_EnumerationBase_Argument_Works()
         {
             var expected = RawEnumerationClass.FirstValue;
             Assert.IsTrue(expected.Equals(RawEnumerationClass.FirstValue));
@@ -43,7 +43,7 @@ namespace Matters.Core.Tests.Domain
         }
 
         [TestMethod]
-        public void Equals_WithObjectArgument_Works()
+        public void Equals_With_Object_Argument_Works()
         { 
             var expected = RawEnumerationClass.FirstValue;
             var notExpected = RawEnumerationClass.SecondValue;
@@ -55,7 +55,7 @@ namespace Matters.Core.Tests.Domain
          }
 
         [TestMethod]
-        public void EqualityOperators_Works()
+        public void Equality_Operators_Works()
         {
             var consumer = RawEnumerationClass.FirstValue;
             

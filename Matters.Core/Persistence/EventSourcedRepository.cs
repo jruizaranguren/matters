@@ -7,12 +7,12 @@ namespace Matters.Core.Persistence
     {
         public static readonly int NewElementVersion = 0;
         
-        private IConstructEventSourced<T> _hydrator;
+        private IConstructEventSourced<T> _constructor;
         private IEventSource _source;
 
-        public EventSourcedRepository(IConstructEventSourced<T> hydrator, IEventSource source)
+        public EventSourcedRepository(IConstructEventSourced<T> constructor, IEventSource source)
         {
-            _hydrator = hydrator;
+            _constructor = constructor;
             _source = source;
         }
 
@@ -25,7 +25,7 @@ namespace Matters.Core.Persistence
         public T GetById(Guid id)
         {
             var events = _source.GetEvents(id);
-            return _hydrator.Build(events);
+            return _constructor.Build(events);
         }
     }
 }

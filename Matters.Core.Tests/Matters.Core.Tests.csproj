@@ -55,8 +55,10 @@
     <Compile Include="Domain\DataSeed.cs" />
     <Compile Include="Domain\EnumerationBaseTests.cs" />
     <Compile Include="Domain\EventSourcedConstructorTests.cs" />
+    <Compile Include="Domain\EventSourcedRepositoryTests.cs" />
     <Compile Include="Domain\EventTests.cs" />
     <Compile Include="Domain\FindApplyTests.cs" />
+    <Compile Include="Persistence\FakeEventSourceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

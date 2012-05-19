@@ -29,7 +29,7 @@ namespace Matters.Core.Domain
             var type = @event.GetType();
             if (!Cache<T>.Dict.TryGetValue(type, out info))
             {
-                // we don't care if state does not consume events
+                // we don't care if state does not consume eventst
                 // they are persisted anyway
                 return;
             }
