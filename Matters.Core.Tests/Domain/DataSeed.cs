@@ -6,15 +6,21 @@ using System;
 namespace Matters.Core.Tests.Domain
 {
     #region ProcessInstanceAggregate
-    public class ProcessInstance : AggregateRoot<ProcessInstanceState>
+    public class ProcessInstance : IAggregateRoot
     {
+        ProcessInstanceState _state;
         public ProcessInstance(ProcessInstanceState state)
-            : base(state)
         {
+            _state = state; 
+        }
+
+        protected void Apply(Event @event)
+        {
+            _state.Apply(@event, true);
         }
     }
 
-    public class ProcessInstanceState : AggregateState
+    public class ProcessInstanceState : AggregateState<ProcessInstanceState>
     {
 
         public ProcessInstanceState(IEnumerable<Event> events)
@@ -33,7 +39,7 @@ namespace Matters.Core.Tests.Domain
     #endregion
 
     #region TaskInstanceAggregate
-    public class TaskInstanceState : AggregateState
+    public class TaskInstanceState : AggregateState<TaskInstanceState>
     {
         public TaskInstanceState(IEnumerable<Event> events)
         {
@@ -41,11 +47,18 @@ namespace Matters.Core.Tests.Domain
         }
     }
 
-    public class TaskInstance : AggregateRoot<TaskInstanceState>
+    public class TaskInstance : IAggregateRoot
     {
+        TaskInstanceState _state;
         public TaskInstance(TaskInstanceState state)
-            : base(state)
-        { }
+        {
+            _state = state;
+        }
+
+        protected void Apply(Event @event)
+        {
+            _state.Apply(@event, true);
+        }
 
         public void NewMethod(Event @event)
         {

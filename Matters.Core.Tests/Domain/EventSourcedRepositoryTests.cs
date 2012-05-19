@@ -29,14 +29,6 @@ namespace Matters.Core.Tests.Domain
             Assert.AreEqual(aggregateState.Id, Guid.Parse("{192BD994-24BB-48C8-A338-2D0F191C2E52}"));
         }
 
-        [TestMethod]
-        public void TestGenericsInheritance()
-        {
-            var sut = new DerivedFromAbstractType();
-            Utils.UsefulMethod<DerivedFromAbstractType>(sut);
-            Assert.AreEqual(10, sut.Value);
-        }
-
         public IEnumerable<Event> GenerateEvents()
         {
             yield return new RepoEvent();
@@ -70,30 +62,5 @@ namespace Matters.Core.Tests.Domain
         {
             OccursNow();
         }
-    }
-
-    public abstract class AbstractType
-    {
-        public int Value { get; set; }
-    }
-
-    public class DerivedFromAbstractType : AbstractType
-    {
-        public void AnyOtherMethod()
-        {
-            Value = 10;
-        }
-    }
-
-    public static class Utils
-    {
-        public static void UsefulMethod<T>(T instance)
-        {
-            MethodInfo info = typeof(T)
-                .GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(m => m.Name == "AnyOtherMethod")
-                .Where(m => m.GetParameters().Length == 0).FirstOrDefault();
-            info.Invoke(instance,null);
-         }
     }
 }

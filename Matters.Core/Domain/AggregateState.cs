@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Matters.Core.Domain
 {
-    public abstract class AggregateState : IAggregateState
+    public abstract class AggregateState<T> : IAggregateState where T: AggregateState<T>
     {
-        public Guid Id { get; private set; }
+        public Guid Id { get; protected set; }
         public int Version { get; protected set; }
 
         private readonly List<Event> _changes = new List<Event>();
@@ -33,7 +33,7 @@ namespace Matters.Core.Domain
         public void Apply(Event @event, bool isNew)
         {
            
-            FindApply.InvokeEvent(this, @event);
+            FindApply.InvokeEvent(this as T, @event);
             if (isNew)
             {
                 Version +=1;

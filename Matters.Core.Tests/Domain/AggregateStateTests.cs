@@ -69,7 +69,7 @@ namespace Matters.Core.Tests.Domain
         }
     }
 
-    public class AggregateStateSample : AggregateState
+    public class AggregateStateSample : AggregateState<AggregateStateSample>
     {
         public AggregateStateSample(IEnumerable<Event> events)
         {

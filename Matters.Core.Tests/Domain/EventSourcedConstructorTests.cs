@@ -29,7 +29,7 @@ namespace Matters.Core.Tests.Domain
        
     }
 
-    public class EventSourcedSample : AggregateState
+    public class EventSourcedSample : AggregateState<EventSourcedSample>
     {
         public EventSourcedSample(IEnumerable<Event> events)
         {
