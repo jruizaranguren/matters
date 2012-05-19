@@ -29,8 +29,7 @@ namespace Matters.Core.Domain
             var type = @event.GetType();
             if (!Cache<T>.Dict.TryGetValue(type, out info))
             {
-                // we don't care if state does not consume eventst
-                // they are persisted anyway
+                // If a method is not found, it is not invoked (events don't always modify state).
                 return;
             }
             try

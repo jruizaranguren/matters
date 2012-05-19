@@ -16,7 +16,8 @@ namespace Matters.Core.Tests.Domain
         public void GetById_Gets_AggregateState()
         {
             int expectedEvents = 0;
-            SystemTime.Now = () => new DateTime(2012, 05, 05);
+            DateTime expectedDate = new DateTime(2012, 05, 05);
+            SystemTime.Now = () => expectedDate;
 
             var sut = new EventSourcedRepository<RepoTestAggregateState>(
                 new RepoTestFactory(),
@@ -27,6 +28,29 @@ namespace Matters.Core.Tests.Domain
             Assert.IsInstanceOfType(aggregateState, typeof(RepoTestAggregateState));
             Assert.AreEqual(expectedEvents, aggregateState.GetUncommittedEvents().Count());
             Assert.AreEqual(aggregateState.Id, Guid.Parse("{192BD994-24BB-48C8-A338-2D0F191C2E52}"));
+        }
+
+        [TestMethod]
+        public void EventSourcedRepository_NewElementVersion_Equals_0()
+        {
+            Assert.AreEqual(EventSourcedRepository<RepoTestAggregateState>.NewElementVersion, 0);
+        }
+
+        [TestMethod]
+        public void Save_Clears_Uncommited_Events()
+        {
+            int expectedEvents = 0;
+            var sut = new EventSourcedRepository<RepoTestAggregateState>(
+                            new RepoTestFactory(),
+                            new FakeEventSource(Enumerable.Empty<Event>()));
+
+            var aggregateState = sut.GetById(Guid.NewGuid());
+            aggregateState.Apply(new RepoEvent(), true);
+
+            sut.Save(aggregateState, aggregateState.Version);
+
+            Assert.AreEqual(expectedEvents, aggregateState.GetUncommittedEvents().Count());
+            
         }
 
         public IEnumerable<Event> GenerateEvents()

@@ -17,7 +17,7 @@ namespace Matters.Core.Domain
             {
                 Apply(e,false);
             }
-            Version = events.Last().Version;
+            Version = events.Count() > 0 ? events.Last().Version : 0;
         }
 
         public IEnumerable<Event> GetUncommittedEvents()

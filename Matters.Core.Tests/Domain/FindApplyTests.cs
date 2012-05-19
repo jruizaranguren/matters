@@ -20,8 +20,24 @@ namespace Matters.Core.Tests.Domain
             Assert.IsTrue(sampleObject.Applied);
         }
 
-        //TODO, test that throws exception
-        //TODO, test that demonstrates cache use
+        [TestMethod]
+        public void InvokeEvent_Apply_Method_Does_Not_Exist_Nothing_Happens()
+        {
+            var sampleObject = new SampleClass();
+
+            FindApply.InvokeEvent(sampleObject, new UnHandledEvent());
+
+            Assert.IsFalse(sampleObject.Applied);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),"Error")]
+        public void InvokeEvent_When_Exception_Is_Thrown_Concrete_Exception_Is_Catched()
+        {
+            var sampleObject = new SampleClass();
+
+            FindApply.InvokeEvent(sampleObject, new EventThatOriginateException());
+        }
     }
 
     public class SampleClass
@@ -37,7 +53,16 @@ namespace Matters.Core.Tests.Domain
         {
             Applied = true;
         }
+
+        public void Apply(EventThatOriginateException @event)
+        {
+            throw new ArgumentException("Error");
+        }
     }
 
     public class EventToApply : Event { }
+
+    public class EventThatOriginateException : Event { }
+
+    public class UnHandledEvent : Event { }
 }
